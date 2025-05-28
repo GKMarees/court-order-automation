@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Court Order Automation</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Court Order Automation</h1>
+        <form id="uploadForm" method="post" action="/process_doc" enctype="multipart/form-data">
+            <input type="file" name="file" accept="application/pdf" required>
+            <button type="submit">Upload and Process</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <strong>Result:</strong> {{ result }}<br>
+            {% if customer_id %}<strong>Customer ID:</strong> {{ customer_id }}<br>{% endif %}
+            {% if action %}<strong>Action:</strong> {{ action }}<br>{% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        form.addEventListener('submit', () => {
+            setTimeout(() => form.reset(), 500);
+        });
+    </script>
+</body>
+</html>
