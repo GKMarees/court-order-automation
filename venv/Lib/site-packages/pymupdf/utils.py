@@ -174,8 +174,6 @@ def show_pdf_page(
     while pno < 0:  # support negative page numbers
         pno += docsrc.page_count
     src_page = docsrc[pno]  # load source page
-    if src_page.get_contents() == []:
-        raise ValueError("nothing to show - source page empty")
 
     tar_rect = rect * ~page.transformation_matrix  # target rect in PDF coordinates
 
@@ -902,6 +900,7 @@ def get_image_rects(page: pymupdf.Page, name, transform=False) -> list:
 def get_text(
     page: pymupdf.Page,
     option: str = "text",
+    *,
     clip: rect_like = None,
     flags: OptInt = None,
     textpage: pymupdf.TextPage = None,
@@ -1951,7 +1950,7 @@ def do_widgets(
         parents[xref]["new_xref"] = parent_xref_new
         parents[xref]["new_kids"] = kids_xrefs_new
 
-    for i in src_range:
+    for i in range(len(src_range)):
         # read first copied over page in target
         tar_page = tar[start_at + i]
 

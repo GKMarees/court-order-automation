@@ -1,24 +1,91 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
     margin: 0;
-    padding: 40px;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f0f2f5;
 }
-.container {
-    background-color: white;
-    padding: 20px 30px;
-    max-width: 600px;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+
+.page-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
 }
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 2px solid #ccc;
 }
-.result {
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.title {
+    font-size: 1.8rem;
+    color: #002d62; /* Arab Bank blue tone */
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #002d62;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #014497;
+}
+
+.message {
     margin-top: 20px;
     padding: 15px;
-    border-left: 5px solid #4caf50;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.success {
     background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    color: #777;
 }

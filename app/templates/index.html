@@ -2,24 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Court Order Automation</title>
+    <title>Court Order Automation - Arab Bank</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Court Order Automation</h1>
-        <form id="uploadForm" method="post" action="/process_doc" enctype="multipart/form-data">
-            <input type="file" name="file" accept="application/pdf" required>
-            <button type="submit">Upload and Process</button>
-        </form>
+    <div class="page-wrapper">
+        <header class="header">
+            <img src="/static/images/arab_bank_logo.png" alt="Arab Bank Logo" class="logo">
+            <h1 class="title">Court Order Automation</h1>
+        </header>
 
-        {% if result %}
-        <div class="result">
-            <strong>Result:</strong> {{ result }}<br>
-            {% if customer_id %}<strong>Customer ID:</strong> {{ customer_id }}<br>{% endif %}
-            {% if action %}<strong>Action:</strong> {{ action }}<br>{% endif %}
-        </div>
-        {% endif %}
+        <main class="card">
+            <form id="uploadForm" method="post" action="/process_doc" enctype="multipart/form-data">
+                <label for="file">Upload Court Order Document:</label>
+                <input type="file" name="file" id="file" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg" required>
+                <button type="submit">Upload and Process</button>
+            </form>
+
+            {% if result %}
+                {% if 'error' in result|lower %}
+                    <div class="message error">
+                        <strong>Error:</strong> {{ result }}
+                    </div>
+                {% else %}
+                    <div class="message success">
+                        <strong>Result:</strong> {{ result }}<br>
+                        {% if customer_id %}<strong>Customer ID:</strong> {{ customer_id }}<br>{% endif %}
+                        {% if action %}<strong>Action:</strong> {{ action }}<br>{% endif %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </main>
+
+        <footer class="footer">
+            &copy; {{ 2025 }} Arab Bank. All rights reserved.
+        </footer>
     </div>
 
     <script>
